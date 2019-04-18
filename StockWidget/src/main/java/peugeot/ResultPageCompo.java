@@ -5,14 +5,19 @@ package peugeot;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Methodes.Wait;
 
 public class ResultPageCompo {
     static String[] Pages;
     static WebDriver driver;
+    static String[] te;
 
     static String CheckTitle(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//h1[@class='stock__title'])")).getText();
+        return driver.findElement(By.className("stock__title")).getText();
 
     }
 
@@ -35,7 +40,8 @@ public class ResultPageCompo {
 
     static boolean VHCardOptionCTAPicto(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//*[normalize-space(text()) and normalize-space(.)='Remises incluses'])[1]/following::span[3]"))
+        return driver.findElement(By.xpath(
+                "//div[@class='stock__content ng-tns-c1-0 ng-star-inserted']//div[1]//app-card[1]//div[1]//div[1]//div[2]//ul[1]//li[1]//span[1]"))
                 .isDisplayed();
 
     }
@@ -51,25 +57,21 @@ public class ResultPageCompo {
 
     static String VHCardConsoCTAtext(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "//div[@class='stock__content ng-tns-c1-0 ng-star-inserted']//div[1]//app-card[1]//div[1]//div[1]//div[2]//ul[1]//li[3]//span[2]"))
-                .getText();
+        return driver.findElement(By.id("vehicle-consumption")).getText();
 
     }
 
     static boolean VHCardConsoCTAPicto(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//*[normalize-space(text()) and normalize-space(.)='Remises incluses'])[1]/following::span[9]"))
-                .isDisplayed();
+        return driver.findElement(By.className("stock__icon-consumption")).isDisplayed();
 
     }
 
     static boolean VHCardConsoCTAClick(WebDriver driver) {
 
-        driver.findElement(By.xpath(
-                "//div[@class='stock__content ng-tns-c1-0 ng-star-inserted']//div[1]//app-card[1]//div[1]//div[1]//div[2]//ul[1]//li[3]//span[2]"))
-                .click();
-        return driver.findElement(By.xpath("//ngb-popover-window[@id='ngb-popover-144']")).isDisplayed();
+        driver.findElement(By.className("stock__icon-consumption")).click();
+        Wait.Wait(2000);
+        return driver.findElement(By.xpath("//div[@class='popover-body']")).isDisplayed();
 
     }
 
@@ -81,8 +83,7 @@ public class ResultPageCompo {
 
     static boolean VHCardEnergyPicto(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//*[normalize-space(text()) and normalize-space(.)='Remises incluses'])[1]/following::span[15]"))
-                .isDisplayed();
+        return driver.findElement(By.className("stock__icon-gas-station")).isDisplayed();
 
     }
 
@@ -94,7 +95,7 @@ public class ResultPageCompo {
 
     static boolean VHCardCO2Picto(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//*[normalize-space(text()) and normalize-space(.)='Diesel'])[1]/following::span[1]")).isDisplayed();
+        return driver.findElement(By.className("stock__icon-environment")).isDisplayed();
 
     }
 
@@ -133,11 +134,11 @@ public class ResultPageCompo {
         return driver.findElement(By.id("vehicle-discounts-price")).getText();
     }
 
-    static String VHCardIsDisplayed(WebDriver driver) {
+    static boolean VHCardIsDisplayed(WebDriver driver) {
 
         return driver.findElement(By.xpath(
                 "//body/div[@id='stock-widget-container']/stock-widget-app[@ng-version='7.2.7']/div[@class='stock__container-fluid stock']/app-search-container[@class='ng-tns-c1-0 ng-star-inserted']/main[@class='ng-tns-c1-0']/div[@class='row stock__main_row']/div[@class='stock__search-container col-lg-9 order-lg-2']/div[@class='stock__content ng-tns-c1-0 ng-star-inserted']/div[@class='row ng-tns-c1-0 ng-trigger ng-trigger-vehicleList ng-star-inserted']/div[1]/app-card[1]/div[1]"))
-                .getText();
+                .isDisplayed();
     }
 
     static String LegalMentions(WebDriver driver) {
@@ -156,20 +157,83 @@ public class ResultPageCompo {
 
     }
 
-    static String[] GetNumberOfPages(WebDriver driver) {
+    static String[] GetVHNumberOnPages(WebDriver driver) {
 
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='stock__pagination__information']")));
         String[] PageComp = driver.findElement(By.xpath("//p[@class='stock__pagination__information']")).getText().split(" ");
         return PageComp;
 
     }
 
-    public static void main(String[] args) {
-        InitialiseDrivers ID = new InitialiseDrivers();
-        driver = ID.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/?families=1PP8&budget=12554;60577");
-        ResultPageCompo RP = new ResultPageCompo();
-        Pages = RP.GetNumberOfPages(driver);
-        System.out.println(Pages[0]);
+    static String[] GetTotalPagesNumber(WebDriver driver) {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='stock__pagination__information']")));
+        String[] PageComp = driver.findElement(By.xpath("//p[@class='stock__pagination__information']")).getText().split(" ");
+        return PageComp;
+
+    }
+
+    static String[] ClickOnPageNumber(WebDriver driver) {
+
+        String[] changePage = new String[2];
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*//a[contains(text(),'3')]")));
+        driver.findElement(By.xpath("//*//a[contains(text(),'3')]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*//a[contains(text(),'3')]")));
+        changePage[0] = driver.findElement(By.xpath("//*//a[contains(text(),'3')]")).getText();
+        changePage[1] = driver.findElement(By.xpath("//a[contains(text(),'2')]")).getText();
+
+        return changePage;
+
+    }
+
+    static boolean CTANextPageBackground(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//li[@class='page-item ng-star-inserted']//a[@class='page-link']")).isDisplayed();
+
+    }
+
+    static String CTANextPageText(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//span[contains(text(),'»')]")).getText();
+
+    }
+
+    static boolean CTAPreviousPageBackground(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//li[1]//a[1]")).isDisplayed();
+
+    }
+
+    static String CTAPreviousPageText(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//span[contains(text(),'«')]")).getText();
+
+    }
+
+    static boolean SortingMenu(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//div[@class='stock__sort__sorting stock__cursor-pointer']")).isDisplayed();
+
+    }
+
+    static int GetTheOffersNum(WebDriver driver) {
+        Wait.Wait(2000);
+        String OffersNumber[] = driver.findElement(By.xpath("//div[@class='stock__sort__results']")).getText().split(" ");
+        String NbVH = OffersNumber[0];
+        int NumberVh;
+
+        if (OffersNumber.equals("")) {
+
+            NumberVh = 1;
+        } else {
+
+            NumberVh = Integer.parseInt(NbVH);
+        }
+
+        return NumberVh;
     }
 
 }

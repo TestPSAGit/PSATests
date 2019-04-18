@@ -22,11 +22,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -73,5 +68,7 @@
 	<classpathentry kind="lib" path="C:/Users/e550004/Desktop/selenium-server-3.9.1 (1)/libs/xalan-2.7.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/e550004/Desktop/selenium-server-3.9.1 (1)/libs/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/e550004/Desktop/selenium-server-3.9.1 (1)/libs/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="C:/Users/e550004/Desktop/spring-batch-infrastructure-2.2.0.release.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
