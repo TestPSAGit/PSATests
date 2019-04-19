@@ -392,7 +392,7 @@ public class ResultPageFilters {
 
         ListManagement LM = new ListManagement();
 
-        return LM.GetList(driver, "//body//fieldset[7]");
+        return LM.SplitGetFieldList(driver, "//body//fieldset[7]");
 
     }
 

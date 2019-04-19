@@ -31,30 +31,45 @@ public class TestdeTests {
 
     @Test
 
-    public void TestGearBoxesListNbVHChanges() {
+    public void TestSortingMenuListWithLocalisation() {// check qu'on récup les valeurs de la sorting menu list
         Wait.Wait(2000);
         boolean exist = false;
-        int[] NbVh = new int[100];
+        fp.EnterTheLocation(driver, "Porto");
+        Wait.Wait(3000);
         int Error = 0;
-        NbVh[0] = 0;
-        String[] GearboxesList = fp.GetGearBoxList(driver);
+        String[] Sortingliste = fp.SortingMenuListText(driver);
+        Wait.Wait(1000);
+        System.out.println(Sortingliste.length);
+        for (int i = 1; i < Sortingliste.length; i++) {
 
-        for (int i = 1; i < GearboxesList.length; i++) {
+            // System.out.println(Sortingliste[i]);
+            // System.out.println(Sortingliste[i - 1]);
 
-            fp.ClickOnListElement(driver, "//fieldset[6]//app-filter-choice[" + i + "]//label[1]//span[2]");
-
+            fp.ClickOnListElement(driver,
+                    "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/div[1]/span[2]");//
             Wait.Wait(2000);
 
-            NbVh[i + 1] = rp.GetTheOffersNum(driver);
+            String[] ListAbove = rp.TextSortingAboveList(driver);
 
-            if (NbVh[i + 1] <= NbVh[i]) {
+            if (Sortingliste[i].contains("Par proximité")) {
+
+                exist = true;
+
+            }
+
+            else if (ListAbove[i].contains(Sortingliste[i])) {
+
+                System.out.println("GOOD");
+
+            } else {
 
                 Error++;
-                System.err.println(GearboxesList[i]);
+                System.err.println("0000000" + ListAbove[i] + "OOOOOOO" + Sortingliste[i] + "0000000");
+
             }
 
         }
-        assert (Error == 0);
+        assert (exist == true);
     }
 
 }

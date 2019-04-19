@@ -58,6 +58,12 @@ public class ListManagement {
         Wait.Wait(2000);
 
         List<WebElement> List = driver.findElements(By.xpath(XpathList));
+        // int i = 0;
+        // for (WebElement element : List) {
+
+        // System.out.println("000000" + i + "000000" + element.getText());
+        // i++;
+        // }
 
         refineList = List.get(0).getText().split("\\n");
 

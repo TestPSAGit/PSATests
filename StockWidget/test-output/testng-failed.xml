@@ -5,8 +5,8 @@
     <classes>
       <class name="peugeot.TestdeTests">
         <methods>
+          <include name="TestSortingMenuListWithLocalisation"/>
           <include name="BeforeTest"/>
-          <include name="TestEnergyListNbVHChanges"/>
         </methods>
       </class> <!-- peugeot.TestdeTests -->
     </classes>

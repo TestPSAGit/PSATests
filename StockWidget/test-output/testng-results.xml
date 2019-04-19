@@ -2,19 +2,19 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="40938" started-at="2019-04-18T15:15:14Z" finished-at="2019-04-18T15:15:55Z">
+  <suite name="Default suite" duration-ms="19146" started-at="2019-04-19T14:57:58Z" finished-at="2019-04-19T14:58:17Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="40938" started-at="2019-04-18T15:15:14Z" finished-at="2019-04-18T15:15:55Z">
+    <test name="Default test" duration-ms="19146" started-at="2019-04-19T14:57:58Z" finished-at="2019-04-19T14:58:17Z">
       <class name="peugeot.TestdeTests">
-        <test-method status="PASS" signature="BeforeTest()[pri:0, instance:peugeot.TestdeTests@670b40af]" name="BeforeTest" is-config="true" duration-ms="5438" started-at="2019-04-18T15:15:08Z" finished-at="2019-04-18T15:15:14Z">
+        <test-method status="PASS" signature="BeforeTest()[pri:0, instance:peugeot.TestdeTests@670b40af]" name="BeforeTest" is-config="true" duration-ms="4094" started-at="2019-04-19T14:57:54Z" finished-at="2019-04-19T14:57:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeTest -->
-        <test-method status="PASS" signature="TestGearBoxesListNbVHChanges()[pri:0, instance:peugeot.TestdeTests@670b40af]" name="TestGearBoxesListNbVHChanges" duration-ms="40901" started-at="2019-04-18T15:15:14Z" finished-at="2019-04-18T15:15:55Z">
+        <test-method status="PASS" signature="TestSortingMenuListWithLocalisation()[pri:0, instance:peugeot.TestdeTests@670b40af]" name="TestSortingMenuListWithLocalisation" duration-ms="19111" started-at="2019-04-19T14:57:58Z" finished-at="2019-04-19T14:58:17Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TestGearBoxesListNbVHChanges -->
+        </test-method> <!-- TestSortingMenuListWithLocalisation -->
       </class> <!-- peugeot.TestdeTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

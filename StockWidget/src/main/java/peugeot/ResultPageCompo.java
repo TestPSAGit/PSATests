@@ -236,4 +236,40 @@ public class ResultPageCompo {
         return NumberVh;
     }
 
+    static String[] TextFinitonsAboveList(WebDriver driver) {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='ng-tns-c5-3 ng-star-inserted']")));
+        String[] TextAboveList = driver.findElement(By.xpath("//span[@class='ng-tns-c5-3 ng-star-inserted']")).getText().split(",");
+        return TextAboveList;
+
+    }
+
+    static String[] TextModelsAboveList(WebDriver driver) {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='ng-tns-c5-1 ng-star-inserted']")));
+        String[] TextAboveList = driver.findElement(By.xpath("//span[@class='ng-tns-c5-1 ng-star-inserted']")).getText().split(",");
+        return TextAboveList;
+
+    }
+
+    static String[] TextEngineAboveList(WebDriver driver) {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='ng-tns-c5-2 ng-star-inserted']")));
+        String[] TextAboveList = driver.findElement(By.xpath("//span[@class='ng-tns-c5-2 ng-star-inserted']")).getText().split(",");
+        return TextAboveList;
+
+    }
+
+    static String[] TextSortingAboveList(WebDriver driver) {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='sort-label-desktop']")));
+        String[] TextAboveList = driver.findElement(By.xpath("//span[@id='sort-label-desktop']")).getText().split(",");
+        return TextAboveList;
+
+    }
+
 }
