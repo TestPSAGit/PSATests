@@ -5,7 +5,7 @@
     <classes>
       <class name="peugeot.TestdeTests">
         <methods>
-          <include name="TestSortingMenuListWithLocalisation"/>
+          <include name="TestEnvoiFormulaire"/>
           <include name="BeforeTest"/>
         </methods>
       </class> <!-- peugeot.TestdeTests -->

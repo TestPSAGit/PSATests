@@ -192,13 +192,13 @@ public class ResultPageFilters {
 
     static String FinitionsMenuTitleText(WebDriver driver) {
 
-        return driver.findElement(By.id("filter-trim-label")).getText();
+        return driver.findElement(By.xpath("//span[@class='ng-tns-c5-3 ng-star-inserted']")).getText();
 
     }
 
     static String FinitionsMenuTextAboveList(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//span[@class='ng-tns-c5-3 ng-star-inserted']")).getText();
+        return driver.findElement(By.xpath("//label[@id='filter-trim-label']")).getText();
 
     }
 
@@ -251,7 +251,7 @@ public class ResultPageFilters {
 
     static String RadiusTextAbove(WebDriver driver) {
 
-        return driver.findElement(By.id("filter-localisationArea-label")).getText();
+        return driver.findElement(By.xpath("//label[@id='filter-localisationArea-label']")).getText();
 
     }
 
@@ -271,19 +271,37 @@ public class ResultPageFilters {
 
     static String RadiusDistanceMinText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-limit ng5-slider-floor")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[3]/ng5-slider[1]/span[7]"))
+                .getText();
 
     }
 
     static String RadiusDistanceMaxText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-limit ng5-slider-ceil")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[3]/ng5-slider[1]/span[8]"))
+                .getText();
+
+    }
+
+    static WebElement RadiusSliderSelect(WebDriver driver) {
+
+        EnterTheLocation(driver, "Porto");
+        Wait.Wait(3000);
+
+        return driver.findElement(By.xpath(
+                "//ng5-slider[@class='stock__filterSliderLocalization ng5-slider']//span[@class='ng5-slider-span ng5-slider-pointer ng5-slider-pointer-min']"));
+
+        // Actions moveSliders = new Actions(driver); Action action = (Action) moveSliders.dragAndDropBy(Slider, 96, 0).build(); action.perform();
 
     }
 
     static String RadiusCurrentDistanceText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-model-value")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[3]/ng5-slider[1]/span[9]"))
+                .getText();
 
     }
 
@@ -299,6 +317,20 @@ public class ResultPageFilters {
                 .findElement(By.xpath(
                         "//ng5-slider[@class='stock__filterPrice ng5-slider']//span[@class='ng5-slider-span ng5-slider-bar ng5-slider-selection']"))
                 .isDisplayed();
+
+    }
+
+    static WebElement LeftPriceSliderBarSelect(WebDriver driver) {
+
+        return driver.findElement(By.xpath(
+                "//ng5-slider[@class='stock__filterPrice ng5-slider']//span[@class='ng5-slider-span ng5-slider-pointer ng5-slider-pointer-min']"));
+
+    }
+
+    static WebElement RightPriceSliderBarSelect(WebDriver driver) {
+
+        return driver.findElement(By.xpath(
+                "//ng5-slider[@class='stock__filterPrice ng5-slider']//span[@class='ng5-slider-span ng5-slider-pointer ng5-slider-pointer-max']"));
 
     }
 
@@ -320,25 +352,41 @@ public class ResultPageFilters {
 
     static String PriceMinText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-limit ng5-slider-floor")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[7]"))
+                .getText();
 
     }
 
     static String PriceMaxText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-limit ng5-slider-ceil")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[8]"))
+                .getText();
 
     }
 
-    static String PriceSortedMinText(WebDriver driver) {
+    static String PriceCurrentText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-model-value")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[8]"))
+                .getText();
 
     }
 
-    static String PriceSortedMaxText(WebDriver driver) {
+    static String LeftPriceCurrentText(WebDriver driver) {
 
-        return driver.findElement(By.className("ng5-slider-span ng5-slider-bubble ng5-slider-model-high")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[9]"))
+                .getText();
+
+    }
+
+    static String RightPriceCurrentText(WebDriver driver) {
+
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[10]"))
+                .getText();
 
     }
 
@@ -364,7 +412,7 @@ public class ResultPageFilters {
 
     static String GearBoxMenuTextAboveList(WebDriver driver) {
 
-        return driver.findElement(By.id("filter-gearbox-label")).getText();
+        return driver.findElement(By.xpath("//label[@id='filter-gearbox-label']")).getText();
 
     }
 

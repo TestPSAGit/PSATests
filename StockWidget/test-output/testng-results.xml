@@ -2,19 +2,19 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="19146" started-at="2019-04-19T14:57:58Z" finished-at="2019-04-19T14:58:17Z">
+  <suite name="Default suite" duration-ms="25008" started-at="2019-05-17T15:58:54Z" finished-at="2019-05-17T15:59:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="19146" started-at="2019-04-19T14:57:58Z" finished-at="2019-04-19T14:58:17Z">
+    <test name="Default test" duration-ms="25008" started-at="2019-05-17T15:58:54Z" finished-at="2019-05-17T15:59:19Z">
       <class name="peugeot.TestdeTests">
-        <test-method status="PASS" signature="BeforeTest()[pri:0, instance:peugeot.TestdeTests@670b40af]" name="BeforeTest" is-config="true" duration-ms="4094" started-at="2019-04-19T14:57:54Z" finished-at="2019-04-19T14:57:58Z">
+        <test-method status="PASS" signature="BeforeTest()[pri:0, instance:peugeot.TestdeTests@1b26f7b2]" name="BeforeTest" is-config="true" duration-ms="5271" started-at="2019-05-17T15:58:49Z" finished-at="2019-05-17T15:58:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeTest -->
-        <test-method status="PASS" signature="TestSortingMenuListWithLocalisation()[pri:0, instance:peugeot.TestdeTests@670b40af]" name="TestSortingMenuListWithLocalisation" duration-ms="19111" started-at="2019-04-19T14:57:58Z" finished-at="2019-04-19T14:58:17Z">
+        <test-method status="PASS" signature="TestEnvoiFormulaire()[pri:0, instance:peugeot.TestdeTests@1b26f7b2]" name="TestEnvoiFormulaire" duration-ms="24980" started-at="2019-05-17T15:58:54Z" finished-at="2019-05-17T15:59:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TestSortingMenuListWithLocalisation -->
+        </test-method> <!-- TestEnvoiFormulaire -->
       </class> <!-- peugeot.TestdeTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

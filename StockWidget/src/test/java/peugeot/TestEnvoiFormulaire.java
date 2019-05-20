@@ -1,5 +1,5 @@
 /*
- * Creation : 15 avr. 2019
+ * Creation : 17 mai 2019
  */
 package peugeot;
 
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import Methodes.Wait;
 
-public class TestdeTests {
+public class TestEnvoiFormulaire {
 
     static WebDriver driver;
     ResultPageCompo rp = new ResultPageCompo();

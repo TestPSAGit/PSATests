@@ -9,8 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import Methodes.Wait;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 public class ResultPageCompoTest {
     static WebDriver driver;
@@ -28,7 +32,7 @@ public class ResultPageCompoTest {
 
     }
 
-    @Ignore
+    @Test
 
     public void TestPageNumber() {
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -37,7 +41,7 @@ public class ResultPageCompoTest {
         assert (toto.equals("1 - 24"));
     }
 
-    @Ignore
+    @Test
 
     public void GetPageTest() {
         String[] te = rp.ClickOnPageNumber(driver);
@@ -228,6 +232,17 @@ public class ResultPageCompoTest {
     public void TestSortingMenuDisplayed() {
         Wait.Wait(2000);
         assert (rp.SortingMenu(driver) == true);
+        ExtentHtmlReporter reporter = new ExtentHtmlReporter("./Reports/TestReport.html");
+        ExtentReports extent = new ExtentReports();
+        extent.attachReporter(reporter);
+        ExtentTest logger = extent.createTest("TestSortingMenuDisplayed");
+        logger.log(Status.INFO, "Login To Amazon");
+        logger.log(Status.PASS, "Login To Google");
+        extent.flush();
+        ExtentTest logger1 = extent.createTest("TestCTAPrevPageText");
+        logger1.log(Status.INFO, "Login To Amazon");
+        logger1.log(Status.PASS, "Login To Google");
+        extent.flush();
     }
 
 }
