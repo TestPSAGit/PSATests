@@ -5,6 +5,7 @@ package peugeot;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -24,22 +25,19 @@ public class ResultPageCompoTest {
     public void BeforeTest() {
 
         driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/?geodistance=197;41.1579438;-8.629105299999992;Porto&budget=29809;48648");
+        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         // driver.findElement(By.className("psac_noselect")).click();
 
     }
-
-    @Test
-
-    public void TestPageNumber() {
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        String[] Pages = rp.GetVHNumberOnPages(driver);
-        String toto = Pages[0] + " - " + Pages[2];
-        assert (toto.equals("1 - 24"));
-    }
+    /*
+     * @Test
+     * 
+     * public void TestPageNumber() { driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS); String[] Pages =
+     * rp.GetVHNumberOnPages(driver); String toto = Pages[0] + " - " + Pages[2]; assert (toto.equals("1 - 24")); }
+     */
 
     @Test
 
@@ -180,17 +178,28 @@ public class ResultPageCompoTest {
     @Test(priority = 21)
     public void TestPageNumber1() { // check la mention du nb de vh par page
         Wait.Wait(2000);
+        driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[3]/ngb-pagination[1]/ul[1]/li[2]/a[1]"))
+                .click();
+        Wait.Wait(1000);
         String[] Pages = rp.GetVHNumberOnPages(driver);
         String nbdanspage = Pages[0] + " - " + Pages[2];
+        Wait.Wait(1000);
         assert (nbdanspage.equals("1 - 24"));
     }
 
     @Test(priority = 22)
     public void TestTotalPages() { // check la mention du nb total de vh
         Wait.Wait(2000);
+        driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[3]/ngb-pagination[1]/ul[1]/li[2]/a[1]"))
+                .click();
+        Wait.Wait(2000);
         String[] Pages = rp.GetTotalPagesNumber(driver);
+        Wait.Wait(1000);
         String totalpage = Pages[4];
-        assert (totalpage.equals("457"));
+        Wait.Wait(1000);
+        assert (totalpage.contains("2827"));
     }
 
     @Test(priority = 23)

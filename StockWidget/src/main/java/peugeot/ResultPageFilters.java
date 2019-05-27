@@ -7,7 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Methodes.Wait;
 
@@ -43,7 +45,7 @@ public class ResultPageFilters {
     static boolean SortingMenuList(WebDriver driver) {
 
         driver.findElement(By.id("sort-label-desktop")).click();
-        return driver.findElement(By.xpath("//select[@class='stock__sort__sorting__choices ng-tns-c1-0 ng-star-inserted']")).isDisplayed();
+        return driver.findElement(By.xpath("//div[@class='stock__sort__sorting__choices ng-tns-c1-0 ng-star-inserted']")).isDisplayed();
 
     }
 
@@ -110,8 +112,18 @@ public class ResultPageFilters {
     }
 
     static void ClickOnListElement(WebDriver driver, String xpath) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 
         driver.findElement(By.xpath(xpath)).click();
+
+    }
+
+    static void openModelsList(WebDriver driver) {
+
+        driver.findElement(
+                By.xpath("//div[@class='stock__selectBox stock__select-picto stock__filterFamily']//span[@class='stock__icon-arrow-bottom']"))
+                .click();
 
     }
 
@@ -217,7 +229,16 @@ public class ResultPageFilters {
         ListManagement LM = new ListManagement();
 
         return LM.SplitGetListByClick(driver, "//span[@class='ng-tns-c5-3 ng-star-inserted']",
-                "//app-filter-select[@class='stock__filterTrim ng-tns-c5-3']//div[@id='checkboxesModel']");
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[9]/app-filter-select[1]/div[2]");
+
+    }
+
+    static String[] GetFinitionsList2(WebDriver driver) {
+
+        ListManagement LM = new ListManagement();
+
+        return LM.SplitGetListNoClick(driver,
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[9]/app-filter-select[1]/div[2]");
 
     }
 
@@ -392,7 +413,7 @@ public class ResultPageFilters {
 
     static String EnergyMenuTextAboveList(WebDriver driver) {
 
-        return driver.findElement(By.id("filter-energy-label")).getText();
+        return driver.findElement(By.xpath("//label[@id='filter-energy-label']")).getText();
 
     }
 

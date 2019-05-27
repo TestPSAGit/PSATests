@@ -8,7 +8,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Methodes.Wait;
@@ -19,16 +20,22 @@ public class ResultPageFiltersTests {
     ResultPageFilters fp = new ResultPageFilters();
     ResultPageCompo rp = new ResultPageCompo();
 
-    @BeforeSuite
-    public void BeforeTest() {
+    @BeforeMethod
+    public void BeforeMethod() {
 
         driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/?geodistance=197;41.1579438;-8.629105299999992;Porto&budget=29809;48648");
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12476;60577");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
         // driver.findElement(By.className("psac_noselect")).click();
+
+    }
+
+    @AfterMethod
+    public void AfterMethod() {
+        driver.close();
 
     }
 
@@ -59,6 +66,8 @@ public class ResultPageFiltersTests {
     @Test
     public void TestSortingMenuListWithoutLocalisation() {
         Wait.Wait(2000);
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/?budget=12476;60577");
+        Wait.Wait(1000);
         boolean exist = false;
 
         int Error = 0;
@@ -185,7 +194,7 @@ public class ResultPageFiltersTests {
             NbVh[i + 1] = rp.GetTheOffersNum(driver);
             String[] ListAbove = rp.TextModelsAboveList(driver);
 
-            if (NbVh[i + 1] <= NbVh[i]) {
+            if (NbVh[i + 1] < NbVh[i]) {
 
                 Error++;
                 System.err.println(ModelList[i]);
@@ -264,8 +273,7 @@ public class ResultPageFiltersTests {
     @Test
     public void TestEnergyMenuText() {// check le titre (au dessus de la liste) de la liste Energy est present
         Wait.Wait(2000);
-        assert (fp.GearBoxMenuTextAboveList(driver).equals("Energie"));
-
+        assert (fp.EnergyMenuTextAboveList(driver).contains("Energie"));
     }
 
     @Test
@@ -471,7 +479,7 @@ public class ResultPageFiltersTests {
     }
 
     @Test
-    public void TestRadiusSliderCurrentText() {
+    public void TestMoveSlider() {
         Wait.Wait(2000);
 
         int NBkm0 = rp.GetTheOffersNum(driver);
@@ -482,7 +490,7 @@ public class ResultPageFiltersTests {
         Wait.Wait(2000);
         int NBkm1 = rp.GetTheOffersNum(driver);
         System.out.println(NBkm1);
-        assert (NBkm0 - NBkm1 > 0); // montre que le nb de km affiché change quand on move le slider
+        assert (NBkm0 - NBkm1 < 0); // montre que le nb de km affiché change quand on move le slider
 
     }
 
@@ -530,7 +538,7 @@ public class ResultPageFiltersTests {
         action.perform();
         Wait.Wait(2000);
 
-        assert (fp.PriceMinText(driver).equals("12 874 €"));
+        assert (fp.PriceMinText(driver).equals("12 476 €"));
     }
 
     @Test

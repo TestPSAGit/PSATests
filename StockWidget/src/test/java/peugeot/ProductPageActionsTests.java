@@ -5,6 +5,7 @@ package peugeot;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -20,7 +21,7 @@ public class ProductPageActionsTests {
     public void BeforeTest() {
 
         driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/?geodistance=197;41.1579438;-8.629105299999992;Porto&budget=29809;48648");
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -28,19 +29,20 @@ public class ProductPageActionsTests {
 
     }
 
-    @Test
+    @Test(priority = 1)
     public void TestPopinDetailPrix() {// check présence CTA retour
-
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         Wait.Wait(2000);
         pp.DetailPrixSelect(driver);
         Wait.Wait(2000);
         assert (pp.PopupDétailPrixTextTitle(driver).contains("DÉTAIL DU PRIX"));
+        driver.findElement(By.xpath("//span[@class='stock__icon-cross']")).click();
 
     }
 
     @Test
     public void TestClickCTAGaucheVisuEXT() { // on vérifie qu'à chaque clic sur le bouton de défilement de gauche, le compteur de défilement de
-                                              // visuels change
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance="); // visuels change
         Wait.Wait(2000);
         String[] compteur = new String[100];
         int Error = 0;
@@ -65,7 +67,7 @@ public class ProductPageActionsTests {
 
     @Test
     public void TestClickCTADroiteVisuExt() { // on vérifie qu'à chaque clic sur le bouton de défilement de droite, le compteur de défilement de
-                                              // visuels change
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance="); // visuels change
         Wait.Wait(2000);
         String[] compteur = new String[100];
         int Error = 0;
@@ -91,7 +93,7 @@ public class ProductPageActionsTests {
 
     @Test
     public void TestClickCTAGaucheVisuInt() { // on vérifie qu'à chaque clic sur le bouton de défilement de gauche, le compteur de défilement de
-                                              // visuels change
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance="); // visuels change
         Wait.Wait(2000);
         String[] compteur = new String[100];
         int Error = 0;
@@ -118,6 +120,8 @@ public class ProductPageActionsTests {
 
     public void TestClickCTADroiteVisuInt() { // on vérifie qu'à chaque clic sur le bouton de défilement de droite, le compteur de défilement de
         // visuels change
+
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         Wait.Wait(2000);
         String[] compteur = new String[100];
         int Error = 0;
@@ -142,36 +146,49 @@ public class ProductPageActionsTests {
 
     }
 
-    @Test
+    @Test(priority = 7)
+
     public void TestPopinFormulaireContact() {
 
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         Wait.Wait(2000);
         pp.CTAContactConseillerSelect(driver);
         Wait.Wait(2000);
+
         assert (pp.PopupFormulaireTextTitle(driver).equals("Vous allez contacter votre concessionnaire !"));
+        driver.findElement(By.xpath("//span[@class='stock__icon-cross']")).click();
 
     }
 
     @Test
     public void TestNewOngletFicheTech() { // vérifie qu'un autre onglet s'ouvre qd on clique sur le CTA fiche technique
 
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
+        Wait.Wait(1000);
+        String winHandleBefore = driver.getWindowHandle();
         Wait.Wait(2000);
         assert (pp.FicheTechPDFDIsplayed1(driver) == true);
+        Wait.Wait(1000);
+        driver.switchTo().window(winHandleBefore);
 
     }
 
     @Test
     public void TestFicheTechPDFContent() { // vérifie que l'URL est valide, et donc ouvre le doc PDF du vh
-
+        Wait.Wait(1000);
+        String winHandleBefore = driver.getWindowHandle();
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         Wait.Wait(2000);
         assert (pp.FicheTechPDFUrlContent(driver).contains("OPV_AP_PT"));
+        Wait.Wait(1000);
+        driver.switchTo().window(winHandleBefore);
 
     }
 
-    @Test
+    @Test(priority = 8)
     public void TestCTAAppelConseillerClick() { // si la popup skype s'affiche, cliquer sur un autre élement de la page doit être impossible, où
                                                 // l'assertion à false
-
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         Wait.Wait(2000);
         assert (pp.CTAAppelConseillerClick(driver) == false);
 

@@ -5,6 +5,7 @@ package peugeot;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -23,7 +24,7 @@ public class TestdeTests {
     public void BeforeTest() {
 
         driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_PA125504?geodistance=");
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -32,11 +33,13 @@ public class TestdeTests {
 
     }
 
-    @Test
-    public void TestEnvoiFormulaire() { //
-
+    @Test(priority = 1)
+    public void TestPopinDetailPrix() {// check présence CTA retour
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09044594?geodistance=");
         Wait.Wait(2000);
-        assert (el.SendLead(driver).contains("Message envoyé !"));
-
+        pp.DetailPrixSelect(driver);
+        Wait.Wait(2000);
+        assert (pp.PopupDétailPrixTextTitle(driver).contains("DÉTAIL DU PRIX"));
+        driver.findElement(By.xpath("//span[@class='stock__icon-cross']")).click();
     }
 }

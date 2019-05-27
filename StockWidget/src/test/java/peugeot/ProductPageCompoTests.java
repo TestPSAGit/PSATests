@@ -5,6 +5,7 @@ package peugeot;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -20,7 +21,7 @@ public class ProductPageCompoTests {
     public void BeforeTest() {
 
         driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/");
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09372651?geodistance=");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -37,7 +38,7 @@ public class ProductPageCompoTests {
     @Test
     public void TestCTAPreviousPageText() {// check texte CTA retour
         Wait.Wait(2000);
-        assert (pp.CTAPreviousPageText(driver).contains("Retour"));
+        assert (pp.CTAPreviousPageText(driver).contains("RETOUR"));
     }
 
     @Test
@@ -106,7 +107,7 @@ public class ProductPageCompoTests {
     @Test
     public void TestPrixTotalTitreText() {// check mention PRIX TOTAL
         Wait.Wait(2000);
-        assert (pp.PrixTotalTitreText(driver).contains(" Prix total "));
+        assert (pp.PrixTotalTitreText(driver).contains("PRIX TOTAL"));
 
     }
 
@@ -264,7 +265,7 @@ public class ProductPageCompoTests {
 
     }
 
-    @Test
+    @Ignore
     public void TestVisuIntImage() {// check présence image int (marche pas car imges variables)
         Wait.Wait(2000);
         pp.PictoVueIntSelect(driver);
@@ -301,7 +302,7 @@ public class ProductPageCompoTests {
     @Test
     public void TestCTAContactConseillerText() {// check présence texte contact conseiller (ne marche pas )
         Wait.Wait(3000);
-        assert (pp.CTAContactConseillerText(driver).contains(" Contacter votre conseiller Peugeot "));
+        assert (pp.CTAContactConseillerText(driver).contains("CONTACTER VOTRE CONSEILLER PEUGEOT"));
 
     }
 
@@ -315,7 +316,7 @@ public class ProductPageCompoTests {
     @Test
     public void TestCompteurImagesExtText() {
         Wait.Wait(3000);
-        assert (pp.CompteurImagesExtText(driver).contains("/ 5"));
+        assert (pp.CompteurImagesExtText(driver).contains("/ 8"));
 
     }
 
@@ -333,7 +334,7 @@ public class ProductPageCompoTests {
         Wait.Wait(2000);
         pp.PictoVueIntSelect(driver);
         Wait.Wait(3000);
-        assert (pp.CompteurImagesIntText(driver).contains("/ 4"));
+        assert (pp.CompteurImagesIntText(driver).contains("/ 3"));
 
     }
 
@@ -437,7 +438,7 @@ public class ProductPageCompoTests {
     public void TestColonneEmissionCO2TitleText() {
 
         Wait.Wait(3000);
-        assert (pp.ColonneEmissionCO2TitleText(driver).contains("ÉMISSION CO2*"));
+        assert (pp.ColonneEmissionCO2TitleText(driver).contains("ÉMISSION CO2"));
 
     }
 
@@ -629,6 +630,7 @@ public class ProductPageCompoTests {
     public void TestTableauBancosDisplayed() {
 
         Wait.Wait(3000);
+        System.out.println("ATTENTION : Tests équipements => Parfois pas présent sur la page = normal");
         assert (pp.TableauBancosDisplayed(driver) == true);
 
     }
@@ -725,6 +727,7 @@ public class ProductPageCompoTests {
     public void TestTableauEquipementsAudioEtCommText() {
 
         Wait.Wait(3000);
+        System.out.println("ATTENTION : Tests équipements => Parfois pas présent sur la page = normal");
         assert (pp.TableauEquipementsAudioEtCommText(driver).contains("ÁUDIO E COMUNICAÇÃO"));
 
     }
@@ -741,6 +744,7 @@ public class ProductPageCompoTests {
     public void TestTableauEquipementsInstruText() {
 
         Wait.Wait(3000);
+        System.out.println("ATTENTION : Tests équipements => Parfois pas présent sur la page = normal");
         assert (pp.TableauEquipementsInstruText(driver).contains("INSTRUMENTAÇÃO"));
 
     }

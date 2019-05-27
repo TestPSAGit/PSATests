@@ -23,7 +23,7 @@ public class ProductPageCompo {
 
     static String CTAPreviousPageText(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//*[@id=\"btn-returnMainPage\"]/text()")).getText();
+        return driver.findElement(By.xpath("//a[@id='btn-returnMainPage']")).getText();
 
     }
 
@@ -279,7 +279,7 @@ public class ProductPageCompo {
 
     static boolean IconeFlecheGaucheVisuelsExt(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//a[contains(@class,'carousel-control-prev ng-star-inserted')]")).isDisplayed();
+        return driver.findElement(By.xpath("//span[@class='carousel-control-prev-icon']")).isDisplayed();
 
     }
 
@@ -362,35 +362,37 @@ public class ProductPageCompo {
 
     static String CTAContactConseillerText(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//*[@id=\"btn-contact\"]")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/div[1]/div[2]/div[1]/app-contact[1]/div[1]/button[1]"))
+                .getText();
 
     }
 
     static boolean CompteurImagesExtDisplayed(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/div[1]/div[1]/app-carousel[1]/div[1]/ngb-carousel[1]/div[1]/div[5]/div[2]/div[2]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//div[contains(text(),' / ')]")).isDisplayed();
 
     }
 
     static String CompteurImagesExtText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/div[1]/div[1]/app-carousel[1]/div[1]/ngb-carousel[1]/div[1]/div[5]/div[2]/div[2]"))
-                .getText();
+        return driver.findElement(By.xpath("//div[contains(text(),' / ')]")).getText();
 
     }
 
     static boolean CompteurImagesIntDisplayed(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//div[contains(text(),'1 / 4')]")).isDisplayed();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/div[1]/div[1]/app-carousel[1]/div[1]/ngb-carousel[1]/div[1]/div[1]/div[2]/div[2]"))
+                .isDisplayed();
 
     }
 
     static String CompteurImagesIntText(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//div[contains(text(),'1 / 4')]")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/div[1]/div[1]/app-carousel[1]/div[1]/ngb-carousel[1]/div[1]/div[1]/div[2]/div[2]"))
+                .getText();
 
     }
 
@@ -803,15 +805,13 @@ public class ProductPageCompo {
 
     static boolean TableauEquipementsOutrosDisplayed(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//app-equipments[@class='ng-star-inserted']//div[8]")).isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Outros')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsOutrosText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[8]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Outros')]")).getText();
 
     }
 
@@ -1001,7 +1001,7 @@ public class ProductPageCompo {
         CTAFicheTechniqueClick(driver);
         Wait.Wait(2000);
 
-        if (driver.getWindowHandles().size() == 2)
+        if (driver.getWindowHandles().size() >= 2)
             return true;
         else
             return false;
