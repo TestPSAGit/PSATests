@@ -8,8 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import Methodes.Wait;
@@ -20,11 +19,11 @@ public class ResultPageFiltersTests {
     ResultPageFilters fp = new ResultPageFilters();
     ResultPageCompo rp = new ResultPageCompo();
 
-    @BeforeMethod
-    public void BeforeMethod() {
+    @BeforeSuite
+    public void BeforeTest() {
 
-        driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12476;60577");
+        driver = InitialiseDrivers.InitialiseIEDriver();
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -33,14 +32,18 @@ public class ResultPageFiltersTests {
 
     }
 
-    @AfterMethod
-    public void AfterMethod() {
-        driver.close();
-
-    }
+    /*
+     * @AfterMethod public void AfterMethod() { driver.close();
+     * 
+     * }
+     */
 
     @Test
     public void TestSortingMenu() {// check le menu sorting est present
+        System.out.println("-------- TestSortingMenu -------------");
+        Wait.Wait(2000);
+
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.SortingMenu(driver) == true);
     }
@@ -48,34 +51,49 @@ public class ResultPageFiltersTests {
     @Test
     public void TestSortingMenuIcon() {// check l'icone du menu sorting est present
         Wait.Wait(2000);
+        System.out.println("-------- TestSortingMenuIcon -------------");
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
+        Wait.Wait(2000);
         assert (fp.SortingMenuIcone(driver) == true);
     }
 
     @Test
     public void TestSortingMenuText() {// check le texte du menu sorting est present
+        System.out.println("-------- TestSortingMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.SortingMenuText(driver).equals("Trier les résultats"));
     }
 
     @Test
     public void TestSortingMenuListDisplayed() {// check que la liste du menu sorting est présente
+
+        System.out.println("-------- TestSortingMenuListDisplayed -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.SortingMenuList(driver) == true);
     }
 
     @Test
     public void TestSortingMenuListWithoutLocalisation() {
+        System.out.println("-------- TestSortingMenuListWithoutLocalisation -------------");
         Wait.Wait(2000);
-        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/?budget=12476;60577");
-        Wait.Wait(1000);
+
+        driver.get("https://rec-widget.stockengine.awsmpsa.com/demo/#/");
+        Wait.Wait(2000);
+
         boolean exist = false;
+        fp.EnterTheLocation(driver, "x");
 
         int Error = 0;
 
         String[] Sortingliste = fp.SortingMenuListText(driver);
         for (int i = 1; i < Sortingliste.length; i++) {
 
-            fp.ClickOnListElement(driver, "//span[@id='sort-price']");
+            fp.ClickOnListElement(driver,
+                    "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/div[1]/span[1]");
             Wait.Wait(2000);
 
             String[] ListAbove = rp.TextSortingAboveList(driver);
@@ -90,6 +108,9 @@ public class ResultPageFiltersTests {
                 System.err.println("0000000" + ListAbove[i - 1] + "OOOOOOO" + Sortingliste[i] + "0000000");
 
             }
+            Wait.Wait(2000);
+            fp.ClickOnListElement(driver,
+                    "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/div[1]");
 
         }
         assert (Error == 0);
@@ -98,6 +119,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestSortingMenuListWithLocalisation() {// check qu'on récup les valeurs de la sorting menu list
+        System.out.println("-------- TestSortingMenuListWithLocalisation -------------");
+        Wait.Wait(2000);
+        driver.get("https://rec-widget.stockengine.awsmpsa.com/demo/#/");
         Wait.Wait(2000);
         boolean exist = false;
         fp.EnterTheLocation(driver, "Porto");
@@ -140,18 +164,27 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestDisplayedModelsList() {// check le menu modèle est present
+        System.out.println("-------- TestDisplayedModelsList -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.ModelsMenu(driver) == true);
     }
 
     @Test
     public void TestModelsMenuIcon() {// check l'icone du menu modeles est present
+        System.out.println("-------- TestModelsMenuIcon -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.ModelsMenuIcone(driver) == true);
     }
 
     @Test
     public void TestModelsMenuText() {// check le titre (au dessus de la liste) du menu modeles est present
+        System.out.println("-------- TestModelsMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.ModelsMenuTitleText(driver).equals("Modèle"));
 
@@ -159,7 +192,12 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestModelsListSimilarJDD() {// Vérifier la conformité de la liste des modeles, avec le JDD
-        Wait.Wait(2000);
+        driver.get("https://rec-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_10047920?geodistance=");
+        Wait.Wait(1000);
+        System.out.println("-------- TestModelsListSimilarJDD -------------");
+        Wait.Wait(3000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
+        Wait.Wait(3000);
         boolean exist = false;
         String[] ModelList = fp.GetModelsList(driver);
         String[] espectedModels = new String[] { "108", "2008", "208", "3008", "308", "5008", "Boxer Combi", "Novo 508", "Partner Tepee", "Rifter",
@@ -178,6 +216,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestModelsListNbVHChanges() {
+        System.out.println("-------- TestModelsListNbVHChanges -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         boolean exist = false;
         int[] NbVh = new int[100];
@@ -216,18 +257,27 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestDisplayedEngineList() {// check le menu engine est present
+        System.out.println("-------- TestDisplayedEngineList -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.EngineMenu(driver) == true);
     }
 
     @Test
     public void TestEngineMenuIcon() {// check l'icone du menu engine est present
+        System.out.println("-------- TestEngineMenuIcon -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.EngineMenuIcone(driver) == true);
     }
 
     @Test
     public void TestEngineMenuText() {// check le titre (au dessus de la liste) du menu engine est present
+        System.out.println("-------- TestEngineMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.EngineMenuTitleText(driver).equals("Moteur"));
 
@@ -235,6 +285,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestEngineListNumberVHChanges() {
+        System.out.println("-------- TestEngineListNumberVHChanges -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         boolean exist = false;
         int[] NbVh = new int[100];
@@ -272,12 +325,18 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestEnergyMenuText() {// check le titre (au dessus de la liste) de la liste Energy est present
+        System.out.println("-------- TestEnergyMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.EnergyMenuTextAboveList(driver).contains("Energie"));
     }
 
     @Test
     public void TestEnergyListNbVHChanges() {
+        System.out.println("-------- TestEnergyListNbVHChanges -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         boolean exist = false;
         int[] NbVh = new int[100];
@@ -305,6 +364,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestGearboxMenuText() {// check le titre (au dessus de la liste) du menu Gearbox est present
+        System.out.println("-------- TestGearboxMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.GearBoxMenuTextAboveList(driver).equals("Boîte vitesse"));
 
@@ -312,6 +374,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestGearBoxesListNbVHChanges() {
+        System.out.println("-------- TestGearBoxesListNbVHChanges -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         boolean exist = false;
         int[] NbVh = new int[100];
@@ -339,6 +404,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestFinitionMenuTitle() {// check le titre (au dessus de la liste) du menu Finition est present
+        System.out.println("-------- TestFinitionMenuTitle -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.FinitionsMenuTextAboveList(driver).equals("Finition"));
 
@@ -346,6 +414,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestFinitionMenuText() {// check que le texte dans le menu Finition est present
+        System.out.println("-------- TestFinitionMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.FinitionsMenuTitleText(driver).equals("Choisissez une finition"));
 
@@ -353,6 +424,12 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestFinitionListNbVHChanges() {
+
+        System.out.println("-------- TestFinitionListNbVHChanges -------------");
+        Wait.Wait(3000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
+        Wait.Wait(3000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         boolean exist = false;
         int[] NbVh = new int[100];
@@ -363,7 +440,8 @@ public class ResultPageFiltersTests {
         for (int i = 1; i < FinitionList.length; i++) {
 
             fp.ClickOnListElement(driver,
-                    "//fieldset[@class='form-group stock__form-check fieldset']//app-filter-choice[" + i + "]//label[1]//span[2]");
+                    "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[9]/app-filter-select[1]/div[2]/app-filter-choice["
+                            + i + "]/label[1]/span[2]");
             Wait.Wait(2000);
 
             NbVh[i + 1] = rp.GetTheOffersNum(driver);
@@ -391,6 +469,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestColorMenuText() {// check le titre (au dessus de la liste) du menu Colors est present
+        System.out.println("-------- TestColorMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.ColorMenuTextAboveList(driver).equals("Couleur"));
 
@@ -398,6 +479,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestColorsListNbVHChanges() {
+        System.out.println("-------- TestColorsListNbVHChanges -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         boolean exist = false;
         int[] NbVh = new int[100];
@@ -425,6 +509,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRadiusMenuText() {// check le titre (au dessus) du menu Rayon est present
+        System.out.println("-------- TestRadiusMenuText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.RadiusTextAbove(driver).equals("Rayon géographique"));
 
@@ -432,6 +519,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRadiusSliderMinText() {// texte relatif à la distance min
+        System.out.println("-------- TestRadiusSliderMinText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         Actions moveSliders = new Actions(driver);
@@ -445,6 +535,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRadiusSliderMaxText() { // texte relatif à la distance max
+        System.out.println("-------- TestRadiusSliderMaxText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         Actions moveSliders = new Actions(driver);
@@ -458,6 +551,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRadiusSliderNBVHup() { // verif le chgt du nb de vh affichés quand on augmente la distance
+        System.out.println("-------- TestRadiusSliderNBVHup -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         Actions moveSliders = new Actions(driver);
@@ -480,6 +576,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestMoveSlider() {
+        System.out.println("-------- TestMoveSlider -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         int NBkm0 = rp.GetTheOffersNum(driver);
@@ -496,6 +595,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRadiusSliderNBVHdown() { // verif le chgt du nb de vh affichés quand on baisse la distance
+        System.out.println("-------- TestRadiusSliderNBVHdown -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         Actions moveSliders = new Actions(driver);
@@ -518,6 +620,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestPriceTextAbove() {// check le titre (au dessus) du slider des prix est present
+        System.out.println("-------- TestPriceTextAbove -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.PriceTextAbove(driver).equals("Prix"));
 
@@ -525,12 +630,18 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestDisplayedPriceSliderBar() {// check la bar de slider du prix est presente
+        System.out.println("-------- TestDisplayedPriceSliderBar -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
         assert (fp.PriceSliderBar(driver) == true);
     }
 
     @Test
     public void TestPriceSliderMinText() {// texte relatif au prix min s'affiche
+        System.out.println("-------- TestPriceSliderMinText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         Actions moveSliders = new Actions(driver);
@@ -543,6 +654,9 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestPriceSliderMaxText() {// texte relatif au prix max s'affiche
+        System.out.println("-------- TestPriceSliderMaxText -------------");
+        Wait.Wait(2000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         Actions moveSliders = new Actions(driver);
@@ -556,7 +670,10 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestLeftPriceSliderCurrentText() {
+        System.out.println("-------- TestLeftPriceSliderCurrentText -------------");
+        Wait.Wait(2000);
 
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         String prix0 = fp.LeftPriceCurrentText(driver);
@@ -575,7 +692,10 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRightPriceSliderCurrentText() {
+        System.out.println("-------- TestRightPriceSliderCurrentText -------------");
+        Wait.Wait(2000);
 
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
         Wait.Wait(2000);
 
         String prix0 = fp.RightPriceCurrentText(driver);
@@ -596,8 +716,10 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestLeftPriceSliderCurrentTextNBVHchange() {
-
-        Wait.Wait(2000);
+        System.out.println("-------- TestLeftPriceSliderCurrentTextNBVHchange -------------");
+        Wait.Wait(3000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
+        Wait.Wait(3000);
 
         int NBVH1 = rp.GetTheOffersNum(driver);
         System.out.println(NBVH1);
@@ -613,8 +735,10 @@ public class ResultPageFiltersTests {
 
     @Test
     public void TestRightPriceSliderCurrentTextNBVHchange() {
-
-        Wait.Wait(2000);
+        System.out.println("-------- TestRightPriceSliderCurrentTextNBVHchange -------------");
+        Wait.Wait(3000);
+        driver.get("https://pprd-widget.stockengine.awsmpsa.com/demo/#/?geodistance=25;41.1579438;-8.629105299999992;Porto&budget=12567;60623");
+        Wait.Wait(3000);
 
         int NBVH1 = rp.GetTheOffersNum(driver);
         System.out.println(NBVH1);

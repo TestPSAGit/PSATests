@@ -45,7 +45,11 @@ public class ResultPageFilters {
     static boolean SortingMenuList(WebDriver driver) {
 
         driver.findElement(By.id("sort-label-desktop")).click();
-        return driver.findElement(By.xpath("//div[@class='stock__sort__sorting__choices ng-tns-c1-0 ng-star-inserted']")).isDisplayed();
+        Wait.WaitForElementToBeVisible(driver,
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/div[1]");
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/div[1]"))
+                .isDisplayed();
 
     }
 
@@ -54,7 +58,7 @@ public class ResultPageFilters {
         ListManagement LM = new ListManagement();
 
         return LM.SplitGetListByClick(driver, "//div[@class='stock__selectBox stock__select-picto']//span[@class='stock__icon-arrow-bottom']",
-                "//div[@class='stock__sort__sorting__choices ng-tns-c1-0 ng-star-inserted']");
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/div[1]");
 
     }
 
@@ -175,8 +179,9 @@ public class ResultPageFilters {
 
         ListManagement LM = new ListManagement();
 
-        return LM.SplitGetListByClick(driver, "//span[@class='ng-tns-c5-2 ng-star-inserted']",
-                "//app-filter-select[@class='stock__filterEngine ng-tns-c5-2']//div[@id='checkboxesModel']");
+        return LM.SplitGetListByClick(driver,
+                "//div[@class='stock__selectBox stock__select-picto stock__filterEngine']//span[@class='stock__icon-arrow-bottom']",
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[8]/app-filter-select[1]/div[2]");
 
     }
 
@@ -204,7 +209,9 @@ public class ResultPageFilters {
 
     static String FinitionsMenuTitleText(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//span[@class='ng-tns-c5-3 ng-star-inserted']")).getText();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[9]/app-filter-select[1]/div[1]/p[1]/span[1]"))
+                .getText();
 
     }
 
@@ -228,7 +235,8 @@ public class ResultPageFilters {
 
         ListManagement LM = new ListManagement();
 
-        return LM.SplitGetListByClick(driver, "//span[@class='ng-tns-c5-3 ng-star-inserted']",
+        return LM.SplitGetListByClick(driver,
+                "//div[@class='stock__selectBox stock__select-picto stock__filterTrim']//span[@class='stock__icon-arrow-bottom']",
                 "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[9]/app-filter-select[1]/div[2]");
 
     }
@@ -344,14 +352,14 @@ public class ResultPageFilters {
     static WebElement LeftPriceSliderBarSelect(WebDriver driver) {
 
         return driver.findElement(By.xpath(
-                "//ng5-slider[@class='stock__filterPrice ng5-slider']//span[@class='ng5-slider-span ng5-slider-pointer ng5-slider-pointer-min']"));
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[5]"));
 
     }
 
     static WebElement RightPriceSliderBarSelect(WebDriver driver) {
 
         return driver.findElement(By.xpath(
-                "//ng5-slider[@class='stock__filterPrice ng5-slider']//span[@class='ng5-slider-span ng5-slider-pointer ng5-slider-pointer-max']"));
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-search-container[1]/main[1]/div[1]/div[2]/app-filter-bar[1]/div[1]/app-filters[1]/aside[1]/form[1]/fieldset[4]/ng5-slider[1]/span[6]"));
 
     }
 

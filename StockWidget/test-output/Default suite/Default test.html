@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>28/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon May 27 11:25:52 CEST 2019</td>
+<td>Started on:</td><td>Tue Aug 27 14:13:38 CEST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>93 seconds (93164 ms)</td>
+<tr><td>Total time:</td><td>77 seconds (77341 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,74 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestTotalPages()'><b>TestTotalPages</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td><div><pre>java.lang.AssertionError
+	at Citroen.ResultPageCompoTestAC.TestTotalPages(ResultPageCompoTestAC.java:202)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace596470015", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace596470015'><pre>java.lang.AssertionError
+	at Citroen.ResultPageCompoTestAC.TestTotalPages(ResultPageCompoTestAC.java:202)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>6</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,45 +143,145 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestCTAAppelConseillerClick()'><b>TestCTAAppelConseillerClick</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.GetPageTest()'><b>GetPageTest</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
-<td>12</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestClickCTADroiteVisuExt()'><b>TestClickCTADroiteVisuExt</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.GetPageTest2()'><b>GetPageTest2</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
-<td>21</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>1</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestClickCTAGaucheVisuEXT()'><b>TestClickCTAGaucheVisuEXT</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.PaginationDisplayed()'><b>PaginationDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
-<td>19</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestClickCTAGaucheVisuInt()'><b>TestClickCTAGaucheVisuInt</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.TestCTANextPageBackground()'><b>TestCTANextPageBackground</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
-<td>17</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestFicheTechPDFContent()'><b>TestFicheTechPDFContent</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.TestCTANextPageText()'><b>TestCTANextPageText</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
-<td>6</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestNewOngletFicheTech()'><b>TestNewOngletFicheTech</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.TestCTAPrevPageBackground()'><b>TestCTAPrevPageBackground</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
-<td>6</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestPopinDetailPrix()'><b>TestPopinDetailPrix</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.TestCTAPrevPageText()'><b>TestCTAPrevPageText</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestConsoCTAPictoClick()'><b>TestConsoCTAPictoClick</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
 <td>4</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 <tr>
-<td title='peugeot.ProductPageActionsTests.TestPopinFormulaireContact()'><b>TestPopinFormulaireContact</b><br>Test class: peugeot.ProductPageActionsTests</td>
+<td title='Citroen.ResultPageCompoTestAC.TestConsoCTAPictoPresent()'><b>TestConsoCTAPictoPresent</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestConsoCTAText()'><b>TestConsoCTAText</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestDeliveryDateText()'><b>TestDeliveryDateText</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestDiscountPrice()'><b>TestDiscountPrice</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestDiscountTitle()'><b>TestDiscountTitle</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestDisplayOptionsListVHCard()'><b>TestDisplayOptionsListVHCard</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
 <td></td>
 <td>4</td>
-<td>peugeot.ProductPageActionsTests@491cc5c9</td></tr>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestEnergyVHCardText()'><b>TestEnergyVHCardText</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestLegalMentions()'><b>TestLegalMentions</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestPageNumber1()'><b>TestPageNumber1</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>5</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestSortingMenuDisplayed()'><b>TestSortingMenuDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>3</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestTitletext()'><b>TestTitletext</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>6</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHAvalaible()'><b>TestVHAvalaible</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHCardBakgroundPictoClassifiDisplayed()'><b>TestVHCardBakgroundPictoClassifiDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHCardCO2PictoDisplayed()'><b>TestVHCardCO2PictoDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHCardCO2text()'><b>TestVHCardCO2text</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHCardDisplayed()'><b>TestVHCardDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHCardEnergyPictoDisplayed()'><b>TestVHCardEnergyPictoDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHCardOptionPicto()'><b>TestVHCardOptionPicto</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.TestVHRemiseBackgroundDisplayed()'><b>TestVHRemiseBackgroundDisplayed</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
+<tr>
+<td title='Citroen.ResultPageCompoTestAC.VHCardClassificationText()'><b>VHCardClassificationText</b><br>Test class: Citroen.ResultPageCompoTestAC</td>
+<td></td>
+<td>2</td>
+<td>Citroen.ResultPageCompoTestAC@2a70a3d8</td></tr>
 </table><p>
 </body>
 </html>

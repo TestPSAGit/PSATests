@@ -370,13 +370,15 @@ public class ProductPageCompo {
 
     static boolean CompteurImagesExtDisplayed(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//div[contains(text(),' / ')]")).isDisplayed();
+        return driver.findElement(By.xpath(
+                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/div[1]/div[1]/app-carousel[1]/div[1]/ngb-carousel[1]/div[1]/div[1]/div[2]/div[2]"))
+                .isDisplayed();
 
     }
 
     static String CompteurImagesExtText(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//div[contains(text(),' / ')]")).getText();
+        return driver.findElement(By.xpath("//div[contains(text(),'/')]")).getText();
 
     }
 
@@ -458,9 +460,7 @@ public class ProductPageCompo {
 
     static String ColonnePuissanceTitleText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-characteristics[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/th[2]"))
-                .getText();
+        return driver.findElement(By.xpath("//th[contains(text(),'Puissance')]")).getText();
 
     }
 
@@ -474,33 +474,25 @@ public class ProductPageCompo {
 
     static String ColonneConsommationTitleText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-characteristics[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/th[3]"))
-                .getText();
+        return driver.findElement(By.xpath("//th[contains(text(),'Consommation')]")).getText();
 
     }
 
     static boolean ColonneConsommationChampText(WebDriver driver) {// test, pas sur que ca marche
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-characteristics[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[3]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//th[contains(text(),'Consommation')]")).isDisplayed();
 
     }
 
     static String ColonneEmissionCO2TitleText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-characteristics[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/th[4]"))
-                .getText();
+        return driver.findElement(By.xpath("//th[contains(text(),'Émission CO2')]")).getText();
 
     }
 
     static boolean ColonneEmissionCO2ChampText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-characteristics[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[4]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//table[@class='stock__characteristics__table']//span[contains(text(),'Émission CO2')]")).isDisplayed();
 
     }
 
@@ -665,31 +657,75 @@ public class ProductPageCompo {
 
     static boolean TableauEquipementsSegurançaDisplayed(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//div[@class='column']//div[1]")).isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Segurança')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsSegurançaText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[1]/h3[1]"))
+        return driver.findElement(By.xpath("//h3[contains(text(),'Segurança')]")).getText();
+
+    }
+
+    static String TableauEquipementsPackDisplayed(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//h3[contains(text(),'Packs')]")).getText();
+
+    }
+
+    static String TableauEquipementsPackText(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//h3[contains(text(),'Packs')]")).getText();
+
+    }
+
+    static String TableauEquipementsTransmissionsDisplayed(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//h3[contains(text(),'Transmissão')]")).getText();
+
+    }
+
+    static String TableauEquipementsTransmissionsText(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//h3[contains(text(),'Transmissão')]")).getText();
+
+    }
+
+    static String TableauEquipementsJantesDisplayed(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//div[@class='col stock__equipments__category odd ng-star-inserted']//h3[contains(text(),'Jantes')]"))
                 .getText();
+
+    }
+
+    static String TableauEquipementsJantesText(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//div[@class='col stock__equipments__category odd ng-star-inserted']//h3[contains(text(),'Jantes')]"))
+                .getText();
+
+    }
+
+    static String TableauEquipementsJantesPneusDisplayed(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//h3[contains(text(),'Jantes / Pneus')]")).getText();
+
+    }
+
+    static String TableauEquipementsJantesPneusText(WebDriver driver) {
+
+        return driver.findElement(By.xpath("//h3[contains(text(),'Jantes / Pneus')]")).getText();
 
     }
 
     static boolean TableauEquipementsInteriorDisplayed(WebDriver driver) {
 
-        return driver.findElement(By
-                .xpath("/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[2]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Interior')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsInteriorText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[2]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Interior')]")).getText();
 
     }
 
@@ -711,95 +747,73 @@ public class ProductPageCompo {
 
     static boolean TableauEquipementsAideConducDisplayed(WebDriver driver) {
 
-        return driver.findElement(By
-                .xpath("/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[3]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Ajuda à Condução')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsAideConducText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[3]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Ajuda à Condução')]")).getText();
 
     }
 
     static boolean TableauEquipementsExterieurDisplayed(WebDriver driver) {
 
-        return driver.findElement(By
-                .xpath("/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[4]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Exterior')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsExterieurTitleText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[4]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Exterior')]")).getText();
 
     }
 
     static boolean TableauEquipementsConfortDisplayed(WebDriver driver) {
 
-        return driver.findElement(By
-                .xpath("/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[4]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Conforto')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsConfortText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[4]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Conforto')]")).getText();
 
     }
 
     static boolean TableauEquipementsInstrumentDisplayed(WebDriver driver) {
 
-        return driver.findElement(By.xpath("//app-equipments[@class='ng-star-inserted']//div[6]")).isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Instrumentação')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsInstrumentText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[6]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Instrumentação')]")).getText();
 
     }
 
     static boolean TableauEsteticaDisplayed(WebDriver driver) {
 
-        return driver.findElement(By
-                .xpath("/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[5]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Estética')]")).isDisplayed();
 
     }
 
     static String TableauEsteticaText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[5]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Estética')]")).getText();
 
     }
 
     static boolean TableauEquipementsAudioEtCommDisplayed(WebDriver driver) {
 
-        return driver.findElement(By
-                .xpath("/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[6]"))
-                .isDisplayed();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Áudio e Comunicação')]")).isDisplayed();
 
     }
 
     static String TableauEquipementsAudioEtCommText(WebDriver driver) {
 
-        return driver.findElement(By.xpath(
-                "/html[1]/body[1]/div[1]/stock-widget-app[1]/div[1]/app-vehicles-details-container[1]/app-equipments[1]/div[1]/div[1]/div[6]/h3[1]"))
-                .getText();
+        return driver.findElement(By.xpath("//h3[contains(text(),'Áudio e Comunicação')]")).getText();
 
     }
 

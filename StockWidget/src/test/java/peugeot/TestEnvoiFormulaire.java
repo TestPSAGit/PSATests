@@ -23,7 +23,7 @@ public class TestEnvoiFormulaire {
     public void BeforeTest() {
 
         driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_PA125504?geodistance=");
+        driver.get("https://rec-widget.stockengine.awsmpsa.com/demo/#/");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -32,11 +32,31 @@ public class TestEnvoiFormulaire {
 
     }
 
-    @Test
-    public void TestEnvoiFormulaire() { //
+    @Test(priority = 1)
+    public void TestEnvoiFormulaireAP() { //
 
-        Wait.Wait(2000);
-        assert (el.SendLead(driver).contains("Message envoyé !"));
+        driver.get("https://rec-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09853160?geodistance=");
+        Wait.Wait(5000);
+        assert (el.SendLeadAP(driver).contains("Message envoyé !"));
+
+    }
+
+    @Test(priority = 2)
+    public void TestEnvoiFormulaireAC() { //
+
+        driver.get(
+                "https://rec-widget.stockengine.awsmpsa.com/render/0fcc058a-c111-4f10-958c-6a8b75d0701a/pt#/vehicles/OPV_AC_PT_10152359?geodistance=");
+        Wait.Wait(5000);
+        assert (el.SendLeadAC(driver).contains("Message envoyé !"));
+
+    }
+
+    @Test(priority = 3)
+    public void TestEnvoiFormulaireDS() { //
+
+        driver.get("https://rec-widget.stockengine.awsmpsa.com/demo/#/vehicles/OPV_AP_PT_09853160?geodistance=");
+        Wait.Wait(5000);
+        assert (el.SendLeadDS(driver).contains("Message envoyé !"));
 
     }
 }

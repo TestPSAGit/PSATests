@@ -24,8 +24,8 @@ public class ResultPageCompoTest {
     @BeforeSuite
     public void BeforeTest() {
 
-        driver = InitialiseDrivers.InitialiseChromDriver();
-        driver.get("https://test-widget.stockengine.awsmpsa.com/demo/#/");
+        driver = InitialiseDrivers.InitialiseIEDriver();
+        driver.get("https://prod-widget.stockengine.awsmpsa.com/demo/#/");
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -79,7 +79,7 @@ public class ResultPageCompoTest {
     public void TestConsoCTAText() {// check si le texte relation à la conso est présent
         Wait.Wait(2000);
         String ConsoCTAText = rp.VHCardConsoCTAtext(driver);
-        assert (ConsoCTAText.contains("L / 100km"));
+        assert (ConsoCTAText.contains("L /100km"));
     }
 
     @Test(priority = 6)
@@ -159,8 +159,8 @@ public class ResultPageCompoTest {
     @Test(priority = 18)
     public void TestLegalMentions() {
         Wait.Wait(2000);
-        assert (rp.LegalMentions(driver).contains(
-                "*Les valeurs de consommation de carburant et d’émissions de CO2 indiquées sont conformes aux homologations NEDC et WLTP ."));
+        assert (rp.LegalMentions(driver)
+                .contains("Les valeurs de consommation de carburant et d’émissions de CO2 indiquées sont conformes aux homologations NEDC et WLTP"));
     }
 
     @Test(priority = 19)
@@ -199,7 +199,7 @@ public class ResultPageCompoTest {
         Wait.Wait(1000);
         String totalpage = Pages[4];
         Wait.Wait(1000);
-        assert (totalpage.contains("2827"));
+        assert (totalpage.contains("1689"));
     }
 
     @Test(priority = 23)
